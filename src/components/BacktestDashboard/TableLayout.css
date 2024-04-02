@@ -1,0 +1,74 @@
+@import url('../../App.css');
+
+/* Container */
+.backtest-table-container {
+  height: auto;
+  transition: max-height 0.5s ease-out;
+  max-height: 1000px; /* Adjust this based on the maximum expected height */
+}
+
+
+/* Table */
+.backtest-table {
+  table-layout: fixed;
+  width: 98%;
+  border-collapse: collapse;
+  background-color: var(--defaultSecondaryColor); /* Consistent with the sidebar background */
+  margin-left: 1%;
+}
+
+.backtest-table-row {
+  height: 65px; /* Fixed row height */
+}
+
+
+.backtest-table-header{
+  background-color: var(--defaultTertiaryColor); /* Header distinct background */
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--defaultBorderColor);
+  color: var(--defaultTextColor); 
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.backtest-table-data {
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--defaultBorderColor);
+  color: var(--defaultTextColor); 
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Pagination Buttons */
+.pagination {
+  display: flex;
+  justify-content: flex-end; /* Aligns pagination to the right */
+  padding: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #e2e2e2;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  th, td {
+    padding: 8px; /* Adjusted for smaller screens */
+  }
+
+  button {
+    padding: 6px 10px;
+    font-size: 0.875rem; /* Smaller font for buttons on small screens */
+  }
+}

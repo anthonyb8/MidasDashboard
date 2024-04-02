@@ -1,0 +1,36 @@
+.header {
+  grid-area: header;
+  background-color: var(--defaultPrimaryColor);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+}
+
+.menu-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  outline: rgba(0, 0, 0, 0.35); /* Ensure no outline on focus for accessibility, consider alternative indicators */
+  background-color: transparent; /* Ensures no background change on focus */
+}
+
+.menu-icon:hover, .menu-icon:focus {
+  background-color: transparent !important; /* Force override */
+  outline: none !important;
+}
+
+.icon {
+  font-size: 26px !important; /* Increased size */
+  color: #9e9ea4 !important; /* Default color */
+}
+
+.menu-icon:hover .icon {
+  color: #e2e2e2 !important; /* Lighter color on hover */
+}

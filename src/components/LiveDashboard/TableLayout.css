@@ -1,0 +1,42 @@
+@import url('../../App.css');
+
+/* Table */
+.live-table-container {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--defaultSecondaryColor);
+  /* table-layout: fixed; */
+}
+
+.live-table-title {
+  color : var(--defaultTextColor);
+}
+
+.live-table-header {
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--defaultBorderColor);
+  color: var(--defaultTextColor);; /* Consistent text color */
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: var(--defaultTertiaryColor); /* Header distinct background */
+  font-weight: 600;
+
+}
+
+.live-table-data {
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--defaultBorderColor);
+  color: var(--defaultTextColor); /* Consistent text color */
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+.live-table-row {
+  height: 65px; /* Fixed row height */
+}
+

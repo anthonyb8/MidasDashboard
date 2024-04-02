@@ -1,0 +1,21 @@
+
+:root{
+  --chartTab_info_height:42px;
+}
+  
+.signal-chart-container {
+  width: 100%;
+  height: calc(100% - var(--chartTab_info_height));
+  z-index: 1;  
+}
+
+@media screen and (max-width:960px) {
+  .outerBox {
+      width: 100%;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: lightsteelblue;
+  }
+}

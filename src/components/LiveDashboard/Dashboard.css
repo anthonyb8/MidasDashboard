@@ -1,0 +1,52 @@
+@import url('../../App.css');
+/* Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-template-rows: auto auto 1fr; /* Three rows: account, positions/orders, risk */
+    gap: 10px;
+    background-color: var(--defaultPrimaryColor);
+    grid-template-areas: 
+      "account account"
+      "positions risk"
+      "orders risk";
+}
+
+.refresh-button {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  background-color: transparent; /* Gives a cleaner look */
+  border: none; /* Removes the button border */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  font-size: 24px; /* Adjust the size as needed */
+  color: #525354; /* Adjust the color as needed */
+}
+
+.refresh-button:hover {
+  background-color: transparent;
+  color: white;
+}
+
+.account {
+  grid-area: account;
+}
+
+.positions {
+  grid-area: positions;
+}
+
+.orders {
+  grid-area: orders;
+}
+
+.risk {
+  grid-area: risk;
+}
+
+.grid-item {
+  padding: 5px;
+  border-radius: 8px;
+  background-color: var(--defaultSecondaryColor);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
