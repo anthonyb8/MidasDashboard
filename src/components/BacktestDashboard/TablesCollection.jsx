@@ -4,14 +4,17 @@ import React, { useState } from 'react';
 import TradeTable from './TradeTable';
 import OverviewTable from './OverviewTable';
 import SignalsTable from './SignalsTable';
+import RegressionTable from './RegressionTable';
 
-function TablesCollection({ overview_data, trades_data, signals_data }) {
+function TablesCollection({ overview_data,regression_data, trades_data, signals_data }) {
   const [selectedTable, setSelectedTable] = useState('overview');
 
   const renderTable = () => {
     switch (selectedTable) {
       case 'overview':
         return <OverviewTable overview_data={overview_data} />;
+      case 'regression':
+          return <RegressionTable data={regression_data} />;
       case 'trades':
         return <TradeTable trades_data={trades_data} />;
       case 'signals':
@@ -28,6 +31,11 @@ function TablesCollection({ overview_data, trades_data, signals_data }) {
           className={`button-style ${selectedTable === 'overview' ? 'selected' : ''}`}
           onClick={() => setSelectedTable('overview')}
           >OVERVIEW
+        </button>
+        <button
+          className={`button-style ${selectedTable === 'regression' ? 'selected' : ''}`}
+          onClick={() => setSelectedTable('regression')}
+          >REGRESSION
         </button>
         <button
           className={`button-style ${selectedTable === 'trades' ? 'selected' : ''}`}

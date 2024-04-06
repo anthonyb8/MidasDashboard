@@ -43,8 +43,8 @@ const Dashboard = () => {
             <div className="content-area">
               <h1 className="content-title">{backtestsCache[currentBacktestId].parameters.strategy_name}</h1>
               <ParametersBar parameters={backtestsCache[currentBacktestId].parameters}/>
-              <ChartsCollection timeseries_stats={backtestsCache[currentBacktestId].timeseriesData} price_data={backtestsCache[currentBacktestId].priceData} signal_data={backtestsCache[currentBacktestId].signalData}/> {/* price_data={backtestData.price_data} signals_data={backtestData.signals}/>*/}
-              <TablesCollection overview_data={backtestsCache[currentBacktestId].static_stats} trades_data ={backtestsCache[currentBacktestId].trades} signals_data={backtestsCache[currentBacktestId].signalData}/>
+              <ChartsCollection timeseries_stats={backtestsCache[currentBacktestId].timeseriesData}  price_data={backtestsCache[currentBacktestId].priceData} signal_data={backtestsCache[currentBacktestId].signalData}/> {/* price_data={backtestData.price_data} signals_data={backtestData.signals}/>*/}
+              <TablesCollection overview_data={backtestsCache[currentBacktestId].static_stats} regression_data={backtestsCache[currentBacktestId].regression_stats} trades_data ={backtestsCache[currentBacktestId].trades} signals_data={backtestsCache[currentBacktestId].signalData}/>
             </div>
           </>
         ) : (
