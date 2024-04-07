@@ -126,9 +126,11 @@ export function BacktestProvider ({ children }) {
     const timeseriesData = preprocessedData.map(item => ({
       timestamp: Math.floor(new Date(item.timestamp).getTime() / 1000),
       equity_value: parseFloat(item.equity_value),
-      daily_return: parseFloat(item.daily_return),
+      period_return: parseFloat(item.period_return),
       cumulative_return: parseFloat(item.cumulative_return),
       percent_drawdown: parseFloat(item.percent_drawdown),
+      daily_strategy_return: parseFloat(item.daily_strategy_return),
+      daily_benchmark_return: parseFloat(item.daily_benchmark_return),
     }));
     
     // Process price_data
