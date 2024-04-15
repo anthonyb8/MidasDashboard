@@ -111,11 +111,39 @@ export async function getBacktestList () {
  * @returns {Promise<Array>} A promise that resolves with an array of backtest summaries if successful.
  * @throws {Error} Throws an error if the fetch fails.
  */
-export async function getSessionData () {
+export async function getSessionList () {
+    log.debug("Fetching list of sessions.")
+    const authToken = sessionStorage.getItem('token');
+    try {
+        const response = await api.get('/api/sessions/',{
+            headers: { 'Authorization': `Token ${authToken}` }
+            }
+        );
+        console.log("Session list Response", response)
+        if (response.status === 200) {
+            log.info("Session list fetched successfully.");
+            const sessionIds = response.data.map(session => session.session_id);
+            return sessionIds
+        } else {
+            log.warn("Error fetching session list", response.statusText);
+        } 
+    } catch (error) {
+        log.error("Error fetching sesssion list.", error);
+        throw error;
+    }
+};
+
+/**
+ * Fetches the session data.
+ * 
+ * @returns {Promise<Array>} A promise that resolves with an array of backtest summaries if successful.
+ * @throws {Error} Throws an error if the fetch fails.
+ */
+export async function getSessionData (session_id) {
     log.debug("Fetching session data.")
     const authToken = sessionStorage.getItem('token');
     try {
-        const response = await api.get('/api/session_data',{
+        const response = await api.get(`/api/sessions/${session_id}/`,{
             headers: { 'Authorization': `Token ${authToken}` }
             }
         );

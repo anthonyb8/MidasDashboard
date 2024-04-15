@@ -3,6 +3,7 @@
 /* Updated Container */
 .account-container {
   padding: 0;
+  color: var(--defaultTextColor);
 }
 
 .account-title{

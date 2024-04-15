@@ -6,6 +6,7 @@
   border-collapse: collapse;
   background-color: var(--defaultSecondaryColor);
   /* table-layout: fixed; */
+  color: var(--defaultTextColor);
 }
 
 .live-table-title {

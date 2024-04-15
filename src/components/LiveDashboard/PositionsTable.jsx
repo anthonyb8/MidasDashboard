@@ -1,12 +1,11 @@
 import React from 'react';
 import './TableLayout.css';
 
-const Positions = ({ data }) => {
-  // Convert the object of objects into an array of objects for easy mapping
-  const positionsArray = Object.entries(data).map(([ticker, details]) => ({
-    ticker,
-    ...details
-  }));
+const Positions = ({ positions }) => {
+  // Check if data is available and is an object
+  if (!positions || typeof positions.data !== 'object' || Object.keys(positions.data).length === 0) {
+    return <div className="live-table-container">No positions available.</div>;
+  }
 
   return (
     <div className="live-table-container">
@@ -23,16 +22,14 @@ const Positions = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {positionsArray.map((position, index) => (
-              <tr className='live-table-row' key={index}>
-                <td className='live-table-data'>{position.ticker}</td>
-                <td className='live-table-data'>{position.action}</td>
-                <td className='live-table-data'>{position.quantity.toLocaleString()}</td>
-                <td className='live-table-data'>${position.avg_cost.toLocaleString()}</td>
-                <td className='live-table-data'>${position.total_cost.toLocaleString()}</td>
-                <td className='live-table-data'>${position.market_value.toLocaleString()}</td>
-              </tr>
-            ))}
+            <tr className='live-table-row' >
+              <td className='live-table-data'>{positions.data.ticker}</td>
+              <td className='live-table-data'>{positions.data.action}</td>
+              <td className='live-table-data'>{positions.data.quantity}</td>
+              <td className='live-table-data'>${positions.data.avg_cost}</td>
+              <td className='live-table-data'>${positions.data.total_cost}</td>
+              <td className='live-table-data'>${positions.data.market_value}</td>
+            </tr>
           </tbody>
         </table>
       </div>

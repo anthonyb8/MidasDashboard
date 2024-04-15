@@ -7,6 +7,9 @@ import "./AccountTable.css";
  * @returns {Array} An array of objects representing the transformed data.
  */
 function transformOverviewData(overviewData) {
+  if (!overviewData || typeof overviewData !== 'object') {
+    return [];
+  }
   const transformedData = [];
   const keys = Object.keys(overviewData);
 
@@ -29,9 +32,13 @@ function transformOverviewData(overviewData) {
   return transformedData;
 }
 
+const Account = ({ account }) => {
+  if (!account || typeof account.data !== 'object' || Object.keys(account.data).length === 0) {
+    return <div className="account-container">No account data available.</div>;
+  }
 
-const Account = ({ data }) => {
-  const transformedData = transformOverviewData(data); 
+  const transformedData = transformOverviewData(account.data); 
+
 
   return (
     <div className="account-container">

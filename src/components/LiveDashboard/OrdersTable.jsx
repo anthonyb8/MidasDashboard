@@ -1,9 +1,11 @@
 import React from 'react';
 import './TableLayout.css';
 
-const Orders = ({ data }) => {
-  // Convert nested objects into an array of order details objects
-  const ordersArray = Object.values(data); // If you need the order ID, use Object.entries(data) and adjust mapping
+const Orders = ({ orders }) => {
+
+  if (!orders || typeof orders.data !== 'object' ) {
+    return <div className="live-table-container">No orders available.</div>;
+  }
 
   return (
     <div className="live-table-container">
@@ -21,16 +23,14 @@ const Orders = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {ordersArray.map((order, index) => (
-              <tr className='live-table-row' key={index}>
-                <td className='live-table-data'>{order.symbol}</td>
-                <td className='live-table-data'>{order.action}</td>
-                <td className='live-table-data'>{order.filled}</td>
-                <td className='live-table-data'>${order.avgFillPrice.toLocaleString()}</td>
-                <td className='live-table-data'>{order.totalQty.toLocaleString()}</td>
-                <td className='live-table-data'>{order.status}</td>
+              <tr className='live-table-row' >
+                <td className='live-table-data'>{orders.data.symbol}</td>
+                <td className='live-table-data'>{orders.data.action}</td>
+                <td className='live-table-data'>{orders.data.status}</td>
+                <td className='live-table-data'>{orders.data.filled}</td>
+                <td className='live-table-data'>{orders.data.totalQty}</td>
               </tr>
-            ))}
+
           </tbody>
         </table>
       </div>
