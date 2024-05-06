@@ -1,10 +1,10 @@
 :root {
-  --defaultPrimaryColor: #1d2634;
-  --defaultSecondaryColor: #263043;
-  --defaultTertiaryColor:#2d3b55;
-  --defaultAccentColor: #f2a365; 
-  --defualtHoverBackground: #374151;
-  --defaultTextColor:#9e9ea4;
+  --defaultPrimaryColor:#000000;
+  --defaultSecondaryColor:#1e1e1e;
+  --defaultTertiaryColor:	#5f5f5f;
+  --defaultAccentColor: #8d8d8d; 
+  --defualtHoverBackground: #a9a9a9;
+  --defaultTextColor:#dddddd;
   --defaultBorderColor:#39495e;
   --defaultBorderWidth: 2px;
 }
@@ -18,19 +18,19 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 260px 1fr; 
-  grid-template-rows: 61px auto; /* Explicitly define header height and remaining space for content */
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr; /* ticker-tape height and remaining space */
   grid-template-areas:
-    "sidebar header"
+    "sidebar ticker-tape"
     "sidebar main";
   height: 100vh;
   transition: all 0.3s ease;
 }
 
-/* When sidebar is hidden, adjust the grid */
-.grid-container.sidebar-hidden {
-  grid-template-columns: 0 1fr; /* Hide the sidebar column */
-} 
 
-
-
+.ticker-tape {
+  margin: 10px;
+  margin-bottom: 0px;
+  background-color: var(--defaultSecondaryColor);
+  border-radius: 5px; /* Optional: for rounded corners */
+}

@@ -1,0 +1,13 @@
+.tradingview-widget-container {
+  height: 100%;  /* Full height of the parent */
+  width: 100%;   /* Full width of the parent */
+  padding: 10px; /* Padding instead of margin for inner spacing */
+  box-sizing: border-box; /* Include padding in width and height calculations */
+}
+
+.tradingview-widget-container__widget {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box; /* Include padding in width and height calculations */
+}
+

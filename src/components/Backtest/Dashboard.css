@@ -1,0 +1,19 @@
+@import url('../../App.css');
+
+.backtest-dashboard-container {
+    height: 100%;
+    margin:10px;
+}
+
+.backtest-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* Two columns */
+  grid-template-rows: auto auto 1fr; /* First two rows set to content height, third row takes remaining space */
+  gap: 10px;
+  background-color: var(--defaultPrimaryColor);
+  grid-template-areas: 
+    "parameters overview"
+    "tables overview"
+    "tables regression"
+    "charts charts";
+}

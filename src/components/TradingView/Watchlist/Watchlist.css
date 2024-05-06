@@ -1,0 +1,6 @@
+.tradingview-waitlist-widget-container{
+    overflow: auto; 
+    box-sizing: border-box; /* Include padding in width and height calculations */
+    height: 83vh
+}
+  

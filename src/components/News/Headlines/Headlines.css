@@ -1,0 +1,58 @@
+
+@import url("../../../App.css");
+
+.headlines-bar {
+    display: flex;
+    align-items: center; /* Center align all children */
+    overflow: hidden; /* Hide anything that goes beyond the bounds */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    background-color: var(--defaultSecondaryColor);
+    margin:10px;
+    border-radius: 8px;
+}
+
+.story-container {
+    position: relative; /* Needed to position text absolutely within the container */
+    margin: 0 auto; /* Center the container */
+    border-radius: 8px; /* Optional: Rounded corners */
+    overflow: hidden; /* Ensures no overflow outside the border radius */
+    width: 100%; /* Adjust width to be fully responsive */
+    max-width: 1000px; /* Maximum width to prevent overly wide containers */
+    max-height: 500px;
+    margin: 0 auto; /* Centering the container */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    cursor: pointer;
+}
+
+.story-container img {
+    width: 100%; /* Full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the area nicely */
+    border-radius: 8px;
+}
+
+.story-container p{
+    color: gray;
+}
+
+.story-overlay {
+    position: absolute;
+    bottom: 10px; /* Position text at the bottom of the image */
+    left: 10px; /* Maintain some margin from the left */
+    color: white; /* White text for better visibility */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Text shadow for readability on varied backgrounds */
+    width: calc(100% - 20px); /* Width minus the padding on both sides */
+}
+
+.story-overlay h1 {
+    font-size: 1.5rem; /* Larger text for headline */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis if text is too long */
+}
+
+.story-overlay p {
+    font-size: 1rem; /* Smaller text for date */
+}

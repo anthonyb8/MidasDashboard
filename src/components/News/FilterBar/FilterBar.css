@@ -1,0 +1,33 @@
+@import url("../../../App.css");
+
+.news-filter-bar {
+    background-color: var(--defaultSecondaryColor);
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: var(--defaultTextColor);
+    display: flex; /* Ensures items are in line */
+    align-items: center; /* Aligns items vertically */
+    justify-content: flex-start; 
+}
+
+.news-filter-bar-buttons {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--defaultTextColor);
+}
+
+.news-separator {
+    color: #333;
+    padding: 0 10px; /* Adds spacing around the separator */
+}
+
+.news-filter-bar-search-box {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex-grow: 0; /* Allows the search box to take up any extra space */
+}

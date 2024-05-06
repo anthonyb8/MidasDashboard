@@ -4,16 +4,13 @@
 #sidebar {
   grid-area: sidebar;
   height: 100%;
-  background-color: var(--defaultPrimaryColor);
+  width: 100%;
+  background-color: var(--defaultSecondaryColor);
   overflow-y: auto;
   transition: transform 0.5s ease;
   transform: translateX(0%);
   box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
   color: var(--defaultTextColor);
-}
-
-#sidebar:not(.active) {
-  transform: translateX(-100%);
 }
 
 /* Sidebar Header  */

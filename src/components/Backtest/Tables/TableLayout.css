@@ -1,0 +1,87 @@
+@import url('../../../App.css');
+
+.backtest-table-container {
+  color: #fff; 
+  font-family: 'Arial', sans-serif; 
+  border-collapse: collapse; 
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif;
+  font-feature-settings: "tnum" on, "lnum" on;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.backtest-table {
+  width: 100%;
+  overflow: auto;
+  height: auto;
+  margin: 0; 
+  padding: 0;
+  border: none;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: var(--defaultSecondaryColor); 
+  margin: 0; 
+}
+
+.backtest-table-header {
+  background-color: #333; 
+  padding: 15px;
+  font-size: 0.9em;
+  text-align: left;
+  padding-top: 10px; 
+  padding-bottom: 10px; 
+  
+}
+.timestamp-column-header {
+  width: 195px; /* Adjust the percentage based on the table layout */
+  background-color: #333; 
+}
+
+.timestamp-column-data{
+  width: 195px; /* Adjust the percentage based on the table layout */
+}
+
+
+
+.backtest-table-data{
+  padding: 10px; 
+  padding: 10px 10px;
+  border-bottom:  1px;
+  color: var(--defaultTextColor);
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  text-transform: uppercase;
+  padding: 0.5rem 0.75rem; 
+}
+
+.backtest-table-row  {
+  border-bottom: 1px solid #434651; 
+}
+
+.backtest-table-row:last-child {
+  border-bottom: none;
+}
+
+/* Pagination Buttons */
+.pagination {
+  display: flex;
+  justify-content: flex-end; /* Aligns pagination to the right */
+  padding: 20px;
+  color: white;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  color: grey;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  color:white;
+}

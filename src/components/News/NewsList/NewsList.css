@@ -1,0 +1,66 @@
+@import url("../../../App.css");
+
+.news-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--defaultSecondaryColor); /* Adjust background as needed */
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.article-teaser {
+    display: flex;
+    width: 99%;
+    padding: 10px;
+    margin-bottom: 20px;
+    align-items: center; /* Aligns items vertically center */
+    border-bottom: 1px solid gray; /* Separates each article visually */
+    cursor: pointer;
+}
+
+.article-teaser img {
+    width: 200px; /* Fixed width for images */
+    height: 150px; /* Fixed height for images */
+    object-fit: cover; /* Ensure images cover the area nicely */
+    border-radius: 8px; /* Optional rounded corners for images */
+    margin-right: 20px; /* Space between image and text */
+}
+
+.article-text {
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    justify-content: center; /* Center text vertically */
+    flex-grow: 1; /* Allows text block to take remaining space */
+    color: white;
+}
+
+.article-text h1, .article-text p {
+    margin: 0; /* Removes default margins */
+}
+
+.article-text h1 {
+    font-size: 1.2rem; /* Adjust font size as needed */
+    color: var(--defaultTextColor); /* Text color for headline */
+    margin-bottom: 5px; /* Space between headline and date */
+}
+
+.article-text p {
+    font-size: 0.9rem; /* Adjust font size for date and teaser */
+    color: gray; /* Lighter text color for date/teaser */
+}
+
+.news-list-load-more {
+    margin: 20px;
+    background-color: transparent;
+    color: gray;
+    border: none;
+    cursor: pointer;
+}
+
+.news-list-load-more:hover {
+    color: white;
+
+}

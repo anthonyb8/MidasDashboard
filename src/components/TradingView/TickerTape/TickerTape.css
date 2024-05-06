@@ -1,0 +1,14 @@
+@import url("../../../App.css");
+
+.tradingview-ticker-tape-container {
+    grid-area: ticker-tape;
+    /* background-color: var(--defaultSecondaryColor);
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 10px;
+    background-color: var(--defaultSecondaryColor);
+    border-radius: 5px; /* Optional: for rounded corners */
+
+  
+}

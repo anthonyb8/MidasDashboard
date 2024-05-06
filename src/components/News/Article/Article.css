@@ -1,0 +1,97 @@
+
+.article-outer {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center; /* Removed quotes */
+    align-items: center; /* Removed quotes */
+    overflow: auto;
+}
+
+.article-inner {
+    background-color: #1e1e1e;
+    padding: 20px; /* Added 'px' */
+    width: 80%; 
+    font-family: 'Arial', sans-serif; /* A more readable font */
+    height: 80%;
+    overflow-y: auto;
+    position: relative;
+    max-width: 800px; /* Optimal line length for reading */
+    margin: auto; /* Center the article in a larger viewport */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds depth */
+}
+
+.icon-close {
+    /* position: absolute;  Position absolutely within .article-inner */
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    color :white;
+    cursor: pointer;  /* Makes it clear it's clickable */
+    font-size : 24px;
+    float: right;
+}
+
+.icon-close:hover {
+    color: grey;  /* Optional: change color on hover */
+}
+
+.article-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 1.8rem; /* Larger font size for titles */
+    margin-bottom: 0.5em; /* Space below the title */
+}
+.date-source {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+
+.article-date {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+.article-content {
+    font-size: 16px;
+    line-height: 1.6;  /* Ensures good readability */
+    color: white;
+}
+
+.source-link {
+    color: #4578ae;
+    text-decoration: none;
+    font-size: 14px;
+
+}
+.article-content img {
+    max-width: 100%; /* Ensures images are not wider than their container */
+    height: auto; /* Maintains the aspect ratio */
+    margin-bottom: 20px; /* Space below images */
+}
+
+.article-content p {
+    font-size: 1rem; /* Comfortable reading size for body text */
+    margin-bottom: 1em; /* Space between paragraphs */
+}
+.article-content a, .source-link {
+    color: #4578ae; /* Example: Change to a dark orange color */
+    text-decoration: none; /* Optional: Removes underline from links */
+}
+
+.article-content a:hover, .source-link:hover {
+    color: #4578ae; /* Darker shade of orange on hover for better visibility */
+    text-decoration: underline; /* Adds underline on hover for emphasis */
+}
