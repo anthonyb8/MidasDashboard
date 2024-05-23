@@ -27,7 +27,7 @@ function ParametersTable({ parameters }) {
                     </tr>
                     <tr className='parameters-table-row'>
                         <td className='parameters-table-data'>CAPITAL</td>
-                        <td className='parameters-table-data'>{parameters.capital}</td>
+                        <td className='parameters-table-data'>{`$${parameters.capital.toLocaleString()}`}</td>
                         <td className='parameters-table-data'>DATA TYPE</td>
                         <td className='parameters-table-data'>{parameters.data_type}</td>
                     </tr>

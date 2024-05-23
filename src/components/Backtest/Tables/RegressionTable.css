@@ -11,6 +11,16 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.regression-table-header{
+  background-color: #333;
+  padding: 15px;
+  font-size: 0.9em;
+  text-align: left;
+  padding-top: 10px; 
+  padding-bottom: 10px; 
+  
+}
+
 .regression-table {
   width: 100%;
   overflow: auto;
@@ -24,14 +34,12 @@
   margin: 0; 
 }
 
-.regression-table-header{
-  background-color: #333;
-  padding: 15px;
-  font-size: 0.9em;
-  text-align: left;
-  padding-top: 10px; 
-  padding-bottom: 10px; 
-  
+
+.regression-table-row  {
+  border-bottom: 1px solid #434651; 
+}
+.regression-table-row:last-child {
+  border-bottom: none; 
 }
 
 .regression-table-data{
@@ -45,11 +53,4 @@
   white-space: nowrap;
   text-transform: uppercase;
   padding: 0.5rem 0.75rem;
-}
-
-.regression-table-row  {
-  border-bottom: 1px solid #434651; 
-}
-.regression-table-row:last-child {
-  border-bottom: none; 
 }

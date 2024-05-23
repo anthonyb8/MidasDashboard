@@ -33,8 +33,8 @@ function TradeTable({ trades_data }) {
              <td className='backtest-table-data'>{trade.leg_id}</td>
              <td className='backtest-table-data'>{trade.ticker}</td>
              <td className='backtest-table-data'>{trade.quantity}</td>
-             <td className='backtest-table-data'>{trade.price}</td>
-             <td className='backtest-table-data'>{trade.cost}</td>
+             <td className='backtest-table-data'>{`$${trade.price.toFixed(2).toLocaleString()}`}</td>
+             <td className='backtest-table-data'>{`$${trade.cost.toFixed(2).toLocaleString()}`}</td>
              <td className='backtest-table-data'>{trade.action}</td>
            </tr>
 

@@ -19,7 +19,6 @@
   padding-top: 10px; 
   padding-bottom: 10px; 
 }
-
 .overview-table {
   width: 100%;
   overflow: auto;
@@ -32,6 +31,7 @@
   background-color: var(--defaultSecondaryColor); /* Consistent with the sidebar background */
   margin: 0; /* Adjusted to remove unnecessary margin */
 }
+
 
 .overview-table-row  {
   border-bottom: 1px solid #434651; /* Border below each row */
