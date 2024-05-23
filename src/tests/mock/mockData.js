@@ -844,29 +844,29 @@ export const mockProcessedBacktest =   {
       {
         timestamp: 1705885200,
         equity_value: 100050.79,
-        percent_drawdown:0.000000,
-        cumulative_return:0.000000,
-        period_return:0.000000,
-        daily_benchmark_return: 0.000000,
-        daily_strategy_return:0.000000
+        period_return: 0,
+        cumulative_return: 0,
+        percent_drawdown: 0,
+        daily_strategy_return: 0,
+        daily_benchmark_return: 0
       },
       {
-        timestamp:1705888800,
-        equity_value:98389.68,
-        percent_drawdown:0.000000,
-        cumulative_return:-0.016600,
-        period_return:-0.016600,
-        daily_benchmark_return:0.002921,
-        daily_strategy_return:-0.016603
+        timestamp: 1705888800,
+        equity_value: 98389.68,
+        period_return: -1.66,
+        cumulative_return: -1.66,
+        percent_drawdown: 0,
+        daily_strategy_return: -1.6602999999999999,
+        daily_benchmark_return: 0.2921
       },
       {
-        timestamp:1705892400,
-        equity_value:96021.49,
-        percent_drawdown:0.000000,
-        cumulative_return:-0.040300,
-        period_return:-0.024100,
-        daily_benchmark_return:0.000812,
-        daily_strategy_return:-0.024069
+        timestamp: 1705892400,
+        equity_value: 96021.49,
+        period_return: -2.41,
+        cumulative_return: -4.03,
+        percent_drawdown: 0,
+        daily_strategy_return: -2.4069,
+        daily_benchmark_return: 0.0812
       }
     ],
     tradeData : [

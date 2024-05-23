@@ -78,6 +78,7 @@ describe('BacktestContext Tests', () => {
     await act(async () => {
         await result.current.getBacktest(1);
     });
+    console.log(result.current.backtestsCache[1]);
 
     // validate
     await waitFor(() => {

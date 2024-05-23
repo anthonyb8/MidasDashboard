@@ -116,11 +116,11 @@ export function BacktestProvider ({ children }) {
     const timeseriesData = preprocessedData.map(item => ({
       timestamp: Math.floor(item.timestamp / 1000000000), // Convert nanoseconds to seconds
       equity_value: parseFloat(item.equity_value),
-      period_return: parseFloat(item.period_return),
-      cumulative_return: parseFloat(item.cumulative_return),
-      percent_drawdown: parseFloat(item.percent_drawdown),
-      daily_strategy_return: parseFloat(item.daily_strategy_return),
-      daily_benchmark_return: parseFloat(item.daily_benchmark_return),
+      period_return: parseFloat(item.period_return) * 100, // convert to percent
+      cumulative_return: parseFloat(item.cumulative_return) * 100, // convert to percent
+      percent_drawdown: parseFloat(item.percent_drawdown) * 100, // convert to percent
+      daily_strategy_return: parseFloat(item.daily_strategy_return) * 100,// convert to percent
+      daily_benchmark_return: parseFloat(item.daily_benchmark_return) * 100,// convert to percent
     }));
     
     // Format price data by normalizing numerical values and adjusting timestamps
