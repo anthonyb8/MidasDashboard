@@ -12,31 +12,42 @@ export const LineChart = ({ data }) => {
             axisPressedMouseMove: true
         },
         layout: {
-            background: '#263043',
-            textColor: '#9e9ea4',
+            background: {
+              color: '#000000'
+            },
+            textColor: 'rgba(197, 203, 206, 1)',
         },
         grid: {
             vertLines: {
-                color: '#263043',
+                color: '#5f5f5f',
             },
             horzLines: {
-                color: '#263043',
+                color: '#5f5f5f',
             },
         },
         crosshair: {
             mode: CrosshairMode.Normal,
 
         },
-        priceScale: {
-            borderColor: '#263043',
+        leftPriceScale: {
+          visible: true,
+          ticksVisible: true,
+          textColor: 'rgba(197, 203, 206, 1)',
+          borderColor: 'rgba(197, 203, 206, 1)',
+        },
+        rightPriceScale: {
+            visible: true,
+            ticksVisible: true,
+            textColor: 'rgba(197, 203, 206, 1)',
+            borderColor: 'rgba(197, 203, 206, 1)',
         },
         width: chartContainerRef.current.clientWidth,
         height: chartContainerRef.current.clientHeight,
         timeScale: {
-            borderColor: '#263043',
-            timeVisible: true,
-            secondVisible: false,
-            // borderVisible:false
+          borderColor: 'rgba(197, 203, 206, 1)',
+          textColor: 'rgba(197, 203, 206, 1)',
+          timeVisible: true,
+          secondVisible: false,
         }
       };
 
@@ -46,7 +57,7 @@ export const LineChart = ({ data }) => {
 
       // Create a line series
       const lineSeries = chart.addLineSeries({
-        color: '#39495e', // line color
+        color: '#dddddd', // line color
         lineWidth: 2,
         priceFormat: {
           type : "number",
@@ -80,7 +91,9 @@ export const LineChart = ({ data }) => {
   return (
     <React.Fragment>
       <div className="linechart-container" >
-            <div className="linechart" ref={chartContainerRef}> </div>
+          <div className="linechart-border-top"></div> 
+          <div className="linechart" ref={chartContainerRef}> </div>
+          <div className="chart-bottom-extension"></div>
       </div>   
     </React.Fragment>
   );

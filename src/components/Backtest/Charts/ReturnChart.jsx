@@ -26,31 +26,42 @@ function ReturnChart({ strategy_data, benchmark_data }) {
                 axisPressedMouseMove: true
             },
             layout: {
-                background: '#263043',
-                textColor: '#9e9ea4',
+                background: {
+                    color: '#000000'
+                  },
+                  textColor: 'rgba(197, 203, 206, 1)',
             },
             grid: {
                 vertLines: {
-                    color: '#263043',
+                    color: '#5f5f5f',
                 },
                 horzLines: {
-                    color: '#263043',
+                    color: '#5f5f5f',
                 },
             },
             crosshair: {
                 mode: CrosshairMode.Normal,
     
             },
-            priceScale: {
-                borderColor: '#263043',
+            leftPriceScale: {
+                visible: true,
+                ticksVisible: true,
+                textColor: 'rgba(197, 203, 206, 1)',
+                borderColor: 'rgba(197, 203, 206, 1)',
+            },
+            rightPriceScale: {
+                visible: true,
+                ticksVisible: true,
+                textColor: 'rgba(197, 203, 206, 1)',
+                borderColor: 'rgba(197, 203, 206, 1)',
             },
             width: chartContainerRef.current.clientWidth,
             height: chartContainerRef.current.clientHeight,
             timeScale: {
-                borderColor: '#263043',
+                borderColor: 'rgba(197, 203, 206, 1)',
+                textColor: 'rgba(197, 203, 206, 1)',
                 timeVisible: true,
                 secondVisible: false,
-                // borderVisible:false
             }
           };
     
@@ -60,7 +71,7 @@ function ReturnChart({ strategy_data, benchmark_data }) {
 
         // Create the legend element
         const legend = document.createElement('div');
-        legend.style = `position: absolute; left: 12px; top: 12px; z-index: 1; 
+        legend.style = `position: absolute;left: 60px; top: 12px; z-index: 1; 
                         font-size: 14px; font-family: sans-serif; line-height: 18px; 
                         font-weight: 300; color: white;`;
         
@@ -72,22 +83,28 @@ function ReturnChart({ strategy_data, benchmark_data }) {
 
         // Strategy Line
         const strategySeries = chart.addLineSeries({
-            color: 'rgba(0, 150, 136, 1)', // Example color for strategy
+            color: 'rgba(0, 150, 136, 1)', 
             lineWidth: 2,
         });
         strategySeries.setData(formatDataForChart(strategy_data));
 
         // Benchmark Line
         const benchmarkSeries = chart.addLineSeries({
-            color: 'red', // Example color for benchmark
+            color: '#dddddd', // Example color for benchmark
             lineWidth: 2,
         });
         benchmarkSeries.setData(formatDataForChart(benchmark_data));
 
         // Update legend with strategy and benchmark labels
         legend.innerHTML = `
-            <div style="color: rgba(0, 150, 136, 1);">Strategy</div>
-            <div style="color: red;">Benchmark</div>
+            <div style="margin-right: 10px;">
+                <span style="color: rgba(0, 150, 136, 1);">●</span>
+                <span style="color: white;">Strategy</span>
+            </div>
+            <div style="display: inline-block;">
+                <span style="color: #dddddd;">●</span>
+                <span style="color: white;">Benchmark</span>
+            </div>
         `;
         chartContainerRef.current.appendChild(legend);
 
@@ -109,7 +126,9 @@ function ReturnChart({ strategy_data, benchmark_data }) {
 
     return (
         <div className="return-chart-container">
+            <div className="return-chart-border-top"></div> 
             <div className="return-chart" ref={chartContainerRef}></div>
+            <div className="chart-bottom-extension"></div>
         </div>   
     )
 }

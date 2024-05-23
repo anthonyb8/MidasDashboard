@@ -88,33 +88,45 @@ function SignalChart({ price_data, signals_data }) {
                 axisPressedMouseMove: true
             },
             layout: {
-                background: '#263043',
-                textColor: '#9e9ea4',
+                background: {
+                    color: '#000000'
+                  },
+                  textColor: 'rgba(197, 203, 206, 1)',
             },
             grid: {
                 vertLines: {
-                    color: '#263043',
+                    color: '#5f5f5f',
                 },
                 horzLines: {
-                    color: '#263043',
+                    color: '#5f5f5f',
                 },
             },
             crosshair: {
                 mode: CrosshairMode.Normal,
     
             },
-            priceScale: {
-                borderColor: '#263043',
+            leftPriceScale: {
+                visible: true,
+                ticksVisible: true,
+                textColor: 'rgba(197, 203, 206, 1)',
+                borderColor: 'rgba(197, 203, 206, 1)',
+            },
+            rightPriceScale: {
+                visible: true,
+                ticksVisible: true,
+                textColor: 'rgba(197, 203, 206, 1)',
+                borderColor: 'rgba(197, 203, 206, 1)',
             },
             width: chartContainerRef.current.clientWidth,
             height: chartContainerRef.current.clientHeight,
             timeScale: {
-                borderColor: '#263043',
+                borderColor: 'rgba(197, 203, 206, 1)',
+                textColor: 'rgba(197, 203, 206, 1)',
                 timeVisible: true,
                 secondVisible: false,
-                // borderVisible:false
             }
-        };
+          };
+    
     
         // Create chart with options
         const chart = createChart(chartContainerRef.current, chartOptions);
@@ -122,7 +134,7 @@ function SignalChart({ price_data, signals_data }) {
 
         // Create the legend element
         const legend = document.createElement('div');
-        legend.style = `position: absolute; left: 12px; top: 12px; z-index: 1; 
+        legend.style = `position: absolute;left: 60px; top: 12px; z-index: 1; 
                         font-size: 14px; font-family: sans-serif; line-height: 18px; 
                         font-weight: 300; color: white;`;
         chartContainerRef.current.appendChild(legend);
@@ -138,24 +150,27 @@ function SignalChart({ price_data, signals_data }) {
                 lineWidth: 2,
             });
 
-        const tickerData = groupedByTicker[ticker].map(item => ({
-            time: item.time,
-            value: item.close,
-        }));
+            const tickerData = groupedByTicker[ticker].map(item => ({
+                time: item.time,
+                value: item.close,
+            }));
 
-        series.setData(tickerData);
+            series.setData(tickerData);
 
-        const flattenedSignals = flattenSignals(signals_data);
-        
-        // Set Signals
-        const tickerMarkers = flattenedSignals
-                .filter(signal => signal.ticker === ticker)
-                .map(createMarkerForSignal);
+            const flattenedSignals = flattenSignals(signals_data);
+            
+            // Set Signals
+            const tickerMarkers = flattenedSignals
+                    .filter(signal => signal.ticker === ticker)
+                    .map(createMarkerForSignal);
 
-        series.setMarkers(tickerMarkers);
-        
-        legendHTML += `<div style="color: ${color};">${ticker}</div>`;
-        });
+            series.setMarkers(tickerMarkers);
+            
+            legendHTML += `<div style=" margin-right: 10px;">
+                            <span style="color: ${color};">● </span>
+                            <span style="color: white;">${ticker}</span>
+                        </div>`;
+            });
 
         legend.innerHTML = legendHTML;
 
@@ -177,7 +192,9 @@ function SignalChart({ price_data, signals_data }) {
 
     return (
         <div className="signal-chart-container">
+            <div className="signal-chart-border-top"></div> 
             <div className="signal-chart" ref={chartContainerRef}></div>
+            <div className="chart-bottom-extension"></div>
         </div>   
     )
 }
