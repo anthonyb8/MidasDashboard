@@ -25,12 +25,12 @@ function TablesCollection({ trades_data, signals_data }) {
         <button
           className={`button-style ${selectedTable === 'trades' ? 'selected' : ''}`}
           onClick={() => setSelectedTable('trades')}
-          >Trades
+          >TRADES
         </button>
         <button
           className={`button-style ${selectedTable === 'signals' ? 'selected' : ''}`}
           onClick={() => setSelectedTable('signals')}
-          >Signals 
+          >SIGNALS
         </button>
       </div>
       <div className="table-container"> 

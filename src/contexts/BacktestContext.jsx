@@ -104,9 +104,16 @@ export function BacktestProvider ({ children }) {
    * @returns {Object} The processed backtest data, including processed timeseriesData, priceData, and signalData, along with all other unmodified backtest data.
    */
   const processBacktest = (backtestData) => {
+
     // Destructure the parts of backtestData that require processing
-    const { period_timeseries_stats, daily_timeseries_stats, price_data, regression_stats, signals, trades, ...restOfBacktestData } = backtestData;
+    const { period_timeseries_stats, daily_timeseries_stats, price_data, static_stats, regression_stats, signals, trades, ...restOfBacktestData } = backtestData;
     
+
+    // Rename Static stats field
+    let processedStaticStats = [ ...static_stats ];
+    processedStaticStats[0].annual_standard_deviation = static_stats[0].annual_standard_deviation_percentage;
+    delete processedStaticStats[0].annual_standard_deviation_percentage; 
+
     // Extract Components
     let processedRegressionData = { ...regression_stats };
     let timeseriesData = regression_stats.timeseries_data || [];
@@ -212,7 +219,9 @@ export function BacktestProvider ({ children }) {
       signalData,
       tradeData,
       regression_stats: processedRegressionData,
-      regressionTimeseriesData
+      static_stats: processedStaticStats,
+      regressionTimeseriesData,
+      
     };
   };
 

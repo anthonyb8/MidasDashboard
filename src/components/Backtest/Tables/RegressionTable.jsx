@@ -9,7 +9,7 @@ import './RegressionTable.css';
  */
 function formatValue(key, value) {
   // Lists defining the format based on key contents
-  const percentageKeys = ["rate", "percent", "return", "drawdown", "volatility", "standard_deviation", "contribution"];
+  const percentageKeys = ["rate", "percent", "return", "drawdown", "volatility", "annual_standard_deviation", "standard_deviation", "contribution"];
   const numberKeys = ["factor","r_squared", "ratio", "number", "p_value", "alpha", "beta", "sharpe", "sortino"];
   const dollarKeys = ["profit", "loss", "fees", "equity", "dollar", "portfolio", "hedge"];
 
@@ -60,21 +60,19 @@ function transformData(overviewData) {
  * @param {Array} props.data - The Regression data to display in the table.
  */
 function RegressionTable({ data }) {
-  console.log(data)
   const transformed_data = transformData(data);
-  console.log(transformed_data);
 
   return (
     <div className="regression-table-container">
-      <h1 className='regression-table-header'>RISK</h1>
+      <h1 className='regression-table-header'>REGRESSION</h1>
       <table className='regression-table'>
         <tbody>
           {transformed_data.map((row, index) => (
             <tr className='regression-table-row' key={index}>
-              <td className='regression-table-data'>{row.key1}</td>
-              <td className='regression-table-data'>{row.value1}</td>
-              <td className='regression-table-data'>{row.key2}</td>
-              <td className='regression-table-data'>{row.value2}</td>
+              <td className='regression-table-data-key'>{row.key1}</td>
+              <td className='regression-table-data-value'>{row.value1}</td>
+              <td className='regression-table-data-key'>{row.key2}</td>
+              <td className='regression-table-data-value'>{row.value2}</td>
             </tr>
           ))}
         </tbody>

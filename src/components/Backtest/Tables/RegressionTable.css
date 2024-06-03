@@ -42,7 +42,7 @@
   border-bottom: none; 
 }
 
-.regression-table-data{
+.regression-table-data-key, .regression-table-data-value{
   padding: 10px; 
   padding: 10px 10px;
   border-bottom:  1px;
@@ -54,3 +54,16 @@
   text-transform: uppercase;
   padding: 0.5rem 0.75rem;
 }
+
+
+
+.regression-table-data-key{
+  text-align: left;
+  overflow: visible;
+}
+
+.regression-table-data-value {
+  text-align: right;
+
+}
+

@@ -10,7 +10,7 @@ import './OverviewTable.css';
 function formatValue(key, value) {
   if (key.toLowerCase().includes("factor") || key.toLowerCase().includes("ratio") || key.toLowerCase().includes("number") || key.toLowerCase().includes("total_trades") ){
     return value.toFixed(2).toString(); // Default to raw number or string
-  } else if (key.toLowerCase().includes("rate") || key.toLowerCase().includes("percent") || key.toLowerCase().includes("return")) {
+  } else if (key.toLowerCase().includes("rate") || key.toLowerCase().includes("percent") || key.toLowerCase().includes("return") || key.toLowerCase().includes("standard_deviation")) {
     return `${(value * 100).toFixed(2)}%`; // Convert to percentage
   } else {
     return `$${value.toFixed(2).toLocaleString()}`; // Format as dollar amount
@@ -60,10 +60,10 @@ function OverviewTable({ overview_data }) {
         <tbody>
           {data.map((row, index) => (
             <tr className='overview-table-row' key={index}>
-              <td className='overview-table-data'>{row.key1}</td>
-              <td className='overview-table-data'>{row.value1}</td>
-              <td className='overview-table-data'>{row.key2}</td>
-              <td className='overview-table-data'>{row.value2}</td>
+              <td className='overview-table-data-key'>{row.key1}</td>
+              <td className='overview-table-data-value'>{row.value1}</td>
+              <td className='overview-table-data-key'>{row.key2}</td>
+              <td className='overview-table-data-value'>{row.value2}</td>
             </tr>
           ))}
         </tbody>

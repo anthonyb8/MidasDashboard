@@ -19,6 +19,7 @@
   padding-top: 10px; 
   padding-bottom: 10px; 
 }
+
 .overview-table {
   width: 100%;
   overflow: auto;
@@ -41,9 +42,9 @@
   border-bottom: none; /* No border for the last row to prevent a double border */
 }
 
-.overview-table-data{
-  padding: 10px; /* Padding inside cells */
-  padding: 10px 10px;
+.overview-table-data-key, .overview-table-data-value {
+  /* padding: 10px; Padding inside cells */
+  /* padding: 5px px; */
   border-bottom:  1px;
   color: var(--defaultTextColor); 
   text-align: left;
@@ -54,4 +55,13 @@
   padding: 0.5rem 0.75rem;
 }
 
+.overview-table-data-key {
+  text-align: left;
+  overflow: visible;
+}
+
+.overview-table-data-value {
+  text-align: right;
+
+}
 

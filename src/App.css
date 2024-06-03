@@ -18,7 +18,7 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 180px 1fr;
   grid-template-rows: auto 1fr; /* ticker-tape height and remaining space */
   grid-template-areas:
     "sidebar ticker-tape"
