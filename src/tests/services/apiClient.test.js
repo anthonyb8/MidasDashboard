@@ -94,8 +94,9 @@ describe('apiClient unit tests', () => {
     const expected_keys = ['id',
                             'static_stats',
                             'regression_stats',
+                            'period_timeseries_stats',
+                            'daily_timeseries_stats',
                             'trades',
-                            'timeseries_stats',
                             'signals',
                             'parameters',
                             'price_data']

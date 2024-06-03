@@ -105,22 +105,70 @@ export function BacktestProvider ({ children }) {
    */
   const processBacktest = (backtestData) => {
     // Destructure the parts of backtestData that require processing
-    const { timeseries_stats, price_data, signals,trades, ...restOfBacktestData } = backtestData;
+    const { period_timeseries_stats, daily_timeseries_stats, price_data, regression_stats, signals, trades, ...restOfBacktestData } = backtestData;
     
+    // Extract Components
+    let processedRegressionData = { ...regression_stats };
+    let timeseriesData = regression_stats.timeseries_data || [];
+    let beta = regression_stats.beta || {};
+    let beta_p = regression_stats.p_value_beta || {};
+    let vif = regression_stats.vif || {};
+
+    // Remove specific nested data from the regression data object
+    delete processedRegressionData.timeseries_data;
+    delete processedRegressionData.residuals;  
+    delete processedRegressionData.backtest;  
+    delete processedRegressionData.beta; 
+    delete processedRegressionData.p_value_beta; 
+    delete processedRegressionData.vif; 
+
+    // Dynamically add beta values to the top-level of processedRegressionData
+    Object.keys(beta).forEach(key => {
+      processedRegressionData[key] = beta[key];
+    });
+
+    Object.keys(beta_p).forEach(key => {
+      processedRegressionData[key] = beta_p[key];
+    });
+
+    Object.keys(vif).forEach(key => {
+      processedRegressionData[key] = vif[key];
+    });
+
+    // Process the timeseries data
+    const regressionTimeseriesData = timeseriesData.map(item => ({
+      timestamp: Math.floor(item.timestamp / 1000000000),  // Convert nanoseconds to seconds
+      daily_benchmark_return: parseFloat(item.daily_benchmark_return) * 100  // Example of processing, adjust according to your data structure
+    }));
+
     // Remove duplicate entries in timeseries_stats based on timestamp uniqueness (shouldn't be any )
-    const preprocessedData = timeseries_stats.filter((item, index, self) =>
+    const preprocessedPeriodData = period_timeseries_stats.filter((item, index, self) =>
       index === self.findIndex((findItem) => findItem.timestamp === item.timestamp)
     );
 
     // Convert timeseries data to a more usable format with simplified time and normalized numerical values
-    const timeseriesData = preprocessedData.map(item => ({
+    const periodTimeseriesData = preprocessedPeriodData.map(item => ({
       timestamp: Math.floor(item.timestamp / 1000000000), // Convert nanoseconds to seconds
       equity_value: parseFloat(item.equity_value),
       period_return: parseFloat(item.period_return) * 100, // convert to percent
       cumulative_return: parseFloat(item.cumulative_return) * 100, // convert to percent
       percent_drawdown: parseFloat(item.percent_drawdown) * 100, // convert to percent
-      daily_strategy_return: parseFloat(item.daily_strategy_return) * 100,// convert to percent
-      daily_benchmark_return: parseFloat(item.daily_benchmark_return) * 100,// convert to percent
+    }));
+
+    // Remove duplicate entries in timeseries_stats based on timestamp uniqueness (shouldn't be any )
+    const preprocessedDailyData = daily_timeseries_stats.filter((item, index, self) =>
+      index === self.findIndex((findItem) => findItem.timestamp === item.timestamp)
+    );
+
+    // Convert timeseries data to a more usable format with simplified time and normalized numerical values
+    const dailyTimeseriesData = preprocessedDailyData.map(item => ({
+      timestamp: Math.floor(item.timestamp / 1000000000), // Convert nanoseconds to seconds
+      equity_value: parseFloat(item.equity_value),
+      period_return: parseFloat(item.period_return) * 100, // convert to percent
+      cumulative_return: parseFloat(item.cumulative_return) * 100, // convert to percent
+      percent_drawdown: parseFloat(item.percent_drawdown) * 100, // convert to percent
+      // daily_strategy_return: parseFloat(item.daily_strategy_return) * 100,// convert to percent
+      // daily_benchmark_return: parseFloat(item.daily_benchmark_return) * 100,// convert to percent
     }));
     
     // Format price data by normalizing numerical values and adjusting timestamps
@@ -158,10 +206,13 @@ export function BacktestProvider ({ children }) {
     // Combine processed data with unmodified parts of the original dataset
     return {
       ...restOfBacktestData,
-      timeseriesData,
+      dailyTimeseriesData,
+      periodTimeseriesData,
       priceData,
       signalData,
-      tradeData
+      tradeData,
+      regression_stats: processedRegressionData,
+      regressionTimeseriesData
     };
   };
 

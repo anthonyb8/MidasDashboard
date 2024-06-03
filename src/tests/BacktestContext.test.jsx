@@ -79,10 +79,11 @@ describe('BacktestContext Tests', () => {
         await result.current.getBacktest(1);
     });
     console.log(result.current.backtestsCache[1]);
+    console.log(mockProcessedBacktest);
 
     // validate
     await waitFor(() => {
-      expect(result.current.backtestsCache).toEqual({1: mockProcessedBacktest});
+      expect(result.current.backtestsCache[1]).toEqual(mockProcessedBacktest);
     })
   });
 

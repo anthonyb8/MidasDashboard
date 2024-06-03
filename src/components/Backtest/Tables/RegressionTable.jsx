@@ -34,14 +34,14 @@ function formatValue(key, value) {
  */
 function transformData(overviewData) {
   const transformedData = [];
-  const keys = Object.keys(overviewData[0]);
+  const keys = Object.keys(overviewData);
 
   // Iterate over the keys in pairs
   for (let i = 0; i < keys.length; i += 2) {
     const key1 = keys[i];
-    const value1 = formatValue(key1, overviewData[0][key1]);
+    const value1 = formatValue(key1, overviewData[key1]);
     const key2 = keys[i + 1] || '';
-    const value2 = key2 ? formatValue(key2, overviewData[0][key2]) : '';
+    const value2 = key2 ? formatValue(key2, overviewData[key2]) : '';
 
     const row = {
       key1: key1.replace(/_/g, ' '),
@@ -60,7 +60,9 @@ function transformData(overviewData) {
  * @param {Array} props.data - The Regression data to display in the table.
  */
 function RegressionTable({ data }) {
+  console.log(data)
   const transformed_data = transformData(data);
+  console.log(transformed_data);
 
   return (
     <div className="regression-table-container">

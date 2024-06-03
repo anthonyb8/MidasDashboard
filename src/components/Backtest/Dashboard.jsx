@@ -11,7 +11,7 @@ import TablesCollection from './Tables/TablesCollection';
 
 const BacktestDashboard = () => {
     const { isLoading, backtestsCache, currentBacktestId, groupedSummaries, updateBacktestId} = useBacktest();
-    
+
     return (
         <div className="backtest-dashboard-container">
             <div key="backtest-dashbaord-filterBar">
@@ -30,11 +30,11 @@ const BacktestDashboard = () => {
                 <div className="grid-item regression"style={{ gridArea: 'regression' }}>
                     <RegressionTable data={backtestsCache[currentBacktestId]?.regression_stats} />
                 </div>
-                <div className="grid-item charts"style={{ gridArea: 'charts' }}>
-                    <ChartsCollection timeseries_stats={backtestsCache[currentBacktestId]?.timeseriesData}  price_data={backtestsCache[currentBacktestId]?.priceData} signals_data={backtestsCache[currentBacktestId]?.signalData} />
-                </div>
                 <div className="grid-item tables"style={{ gridArea: 'tables' }}>
                     <TablesCollection trades_data={backtestsCache[currentBacktestId]?.tradeData} signals_data={backtestsCache[currentBacktestId]?.signalData} />
+                </div> 
+                <div className="grid-item charts"style={{ gridArea: 'charts' }}>
+                    <ChartsCollection period_timeseries_stats={backtestsCache[currentBacktestId]?.periodTimeseriesData} daily_timeseries_stats={backtestsCache[currentBacktestId]?.dailyTimeseriesData} bm_timeseries_stats={backtestsCache[currentBacktestId]?.regressionTimeseriesData} price_data={backtestsCache[currentBacktestId]?.priceData} signals_data={backtestsCache[currentBacktestId]?.signalData} />
                 </div>
             </div>
             )

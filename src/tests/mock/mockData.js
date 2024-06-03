@@ -130,36 +130,58 @@ export const backtestResponse = {status : 200, data: {
       "avg_trade_profit":-36223.7704,
       "sortino_ratio":0.0
     }
-  ],
-"regression_stats":[
-    {
-      "alpha":"-0.45520000",
-      "annualized_return":"-3.14410000",
-      "annualized_volatility":"0.19410000",
-      "beta":"-0.43020000",
-      "idiosyncratic_contribution":"-0.00170000",
-      "idiosyncratic_volatility":"0.01180000",
-      "market_contribution":"-0.00070000",
-      "r_squared":"0.07200000",
-      "p_value_alpha":"0.41880000",
-      "p_value_beta":"0.13120000",
-      "risk_free_rate":"0.0100",
-      "sharpe_ratio":"-16.20100000",
-      "total_contribution":"-0.00250000",
-      "market_volatility":"-0.00330000",
-      "total_volatility":"0.01220000",
-      "portfolio_dollar_beta":"-39566.52200000",
-      "market_hedge_nmv":"39566.52200000"
+],
+"regression_stats":{
+    "MAE": "0.0008490",
+    "RMSE": "0.0009350",
+    "adjusted_r_squared": "0.0038610",
+    "alpha": "0.0005340",
+    "backtest": 1,
+    "beta": {"Beta (HE_futures)": 0.019835400379324686, "Beta (ZC_futures)": -0.08506025908271095},
+    "condition_number": "101.0424000",
+    "durbin_watson": "1.6102320",
+    "f_statistic": "1.0833410",
+    "f_statistic_p_value": "0.3479540",
+    "idiosyncratic_contribution": "0.0004960",
+    "idiosyncratic_volatility": "0.0044040",
+    "jarque_bera": "1.5537740",
+    "jarque_bera_p_value": "0.4598350",
+    "p_value_alpha": "0.5273710",
+    "p_value_beta" : {"Beta (HE_futures) p-value": 0.4615483447051957, "Beta (ZC_futures) p-value": 0.23125731983202844},
+    "r_squared" : "0.0501930",
+    "residuals" : [],
+    "risk_free_rate" : "0.0200",
+    "systematic_contribution" : "-0.0000260",
+    "systematic_volatility" : "0.0010120",
+    "timeseries_data" : [
+      {"timestamp": 1706850000000000000, "daily_benchmark_return": '0.000000'},
+      {"timestamp": 1707109200000000000, "daily_benchmark_return": '0.002400'},
+      {"timestamp": 1707195600000000000, "daily_benchmark_return": '0.006300'},
+      {"timestamp": 1707282000000000000, "daily_benchmark_return": '0.005600'},
+      {"timestamp": 1707368400000000000, "daily_benchmark_return": '0.015200'},
+      {"timestamp": 1707454800000000000, "daily_benchmark_return": '0.005200'}
+    ],
+    "total_contribution": "0.0004700", 
+    "total_volatility": "0.0045190", 
+    "vif" : {
+      "VIF (const)" : 1.218538, 
+      "VIF (HE_futures)": 1.01076, 
+      "VIF (ZC_futures)": 1.01076
     }
+},
+"period_timeseries_stats":[
+      {"timestamp":1705885200000000000,"equity_value":"100050.79","percent_drawdown":"0.000000","cumulative_return":"0.000000","period_return":"0.000000"},
+      {"timestamp":1705888800000000000,"equity_value":"98389.68","percent_drawdown":"0.000000","cumulative_return":"-0.016600","period_return":"-0.016600"},
+      {"timestamp":1705892400000000000,"equity_value":"96021.49","percent_drawdown":"0.000000","cumulative_return":"-0.040300","period_return":"-0.024100"},
+],
+"daily_timeseries_stats":[
+    {"timestamp":1705885200000000000,"equity_value":"100050.79","percent_drawdown":"0.000000","cumulative_return":"0.000000","period_return":"0.000000"},
+    {"timestamp":1705888800000000000,"equity_value":"98389.68","percent_drawdown":"0.000000","cumulative_return":"-0.016600","period_return":"-0.016600"},
+    {"timestamp":1705892400000000000,"equity_value":"96021.49","percent_drawdown":"0.000000","cumulative_return":"-0.040300","period_return":"-0.024100"},
 ],
 "trades":[
     {"trade_id":"1","leg_id":"1","timestamp":1705888800000000000,"ticker":"HE.n.0","quantity":"-1.3867","price":"77.7248","cost":"-43111.1100","action":"SHORT","fees":"1.1787"},
     {"trade_id":"1","leg_id":"2","timestamp":1705888800000000000,"ticker":"ZC.n.0","quantity":"0.3079","price":"447.5025","cost":"6888.7800","action":"LONG","fees":"0.2617"}
-],
-"timeseries_stats":[
-    {"timestamp":1705885200000000000,"equity_value":"100050.79","percent_drawdown":"0.000000","cumulative_return":"0.000000","period_return":"0.000000","daily_benchmark_return":"0.000000","daily_strategy_return":"0.000000"},
-    {"timestamp":1705888800000000000,"equity_value":"98389.68","percent_drawdown":"0.000000","cumulative_return":"-0.016600","period_return":"-0.016600","daily_benchmark_return":"0.002921","daily_strategy_return":"-0.016603"},
-    {"timestamp":1705892400000000000,"equity_value":"96021.49","percent_drawdown":"0.000000","cumulative_return":"-0.040300","period_return":"-0.024100","daily_benchmark_return":"0.000812","daily_strategy_return":"-0.024069"},
 ],
 "signals":[
   {
@@ -716,17 +738,35 @@ export const mockGroupedSummaries = {
 
 export const mockProcessedBacktest =   {
     id: 1,
+    static_stats : [{
+      net_profit: -36223.7704,
+      total_return: -0.0803,
+      max_drawdown: -0.1216,
+      annual_standard_deviation: null,
+      ending_equity: 91966.57,
+      total_fees: 1.4404,
+      total_trades: 1,
+      num_winning_trades: 0,
+      num_lossing_trades: 1,
+      avg_win_percent: 0,
+      avg_loss_percent: -1,
+      percent_profitable: 0,
+      profit_and_loss: 0,
+      profit_factor: 0,
+      avg_trade_profit: -36223.7704,
+      sortino_ratio: 0,
+    }],
     parameters: {
-      benchmark : ['^GSPC'],
-      capital : 100000,
-      created_at : "2024-04-24T21:26:18.811668Z",
-      data_type : "BAR",
       strategy_name : "cointegrationzscore",
-      test_end : "1710046800000000000",
-      test_start : "1705813200000000000",
       tickers : ['HE.n.0', 'ZC.n.0'],
+      benchmark : ['^GSPC'],
+      data_type : "BAR",
+      capital : 100000,
+      train_start : "1704085200000000000",
       train_end : "1705726800000000000",
-      train_start : "1704085200000000000"
+      test_start : "1705813200000000000",
+      test_end : "1710046800000000000",
+      created_at : "2024-04-24T21:26:18.811668Z",
     }, 
     priceData : [
       {
@@ -784,25 +824,34 @@ export const mockProcessedBacktest =   {
         volume:575
       }
     ],
-    regression_stats : [{
-      alpha: "-0.45520000",
-      annualized_return: "-3.14410000",
-      annualized_volatility: "0.19410000",
-      beta: "-0.43020000",
-      idiosyncratic_contribution: "-0.00170000",
-      idiosyncratic_volatility: "0.01180000",
-      market_contribution: "-0.00070000",
-      market_hedge_nmv: "39566.52200000",
-      market_volatility: "-0.00330000",
-      p_value_alpha: "0.41880000",
-      p_value_beta: "0.13120000",
-      portfolio_dollar_beta: "-39566.52200000",
-      r_squared: "0.07200000",
-      risk_free_rate: "0.0100",
-      sharpe_ratio: "-16.20100000",
-      total_contribution: "-0.00250000",
-      total_volatility: "0.01220000"
-    }],
+    regression_stats : {
+      MAE: "0.0008490",
+      RMSE:"0.0009350",
+      adjusted_r_squared: "0.0038610",
+      alpha: "0.0005340",
+      condition_number: "101.0424000",
+      durbin_watson: "1.6102320",
+      f_statistic: "1.0833410",
+      f_statistic_p_value: "0.3479540",
+      idiosyncratic_contribution: "0.0004960",
+      idiosyncratic_volatility: "0.0044040",
+      jarque_bera: "1.5537740",
+      jarque_bera_p_value: "0.4598350",
+      p_value_alpha: "0.5273710",
+      r_squared: "0.0501930",
+      risk_free_rate: "0.0200",
+      systematic_contribution: "-0.0000260",
+      systematic_volatility: "0.0010120",
+      total_contribution: "0.0004700",
+      total_volatility: "0.0045190",
+      "Beta (HE_futures)": 0.019835400379324686,
+      "Beta (HE_futures) p-value": 0.4615483447051957,
+      "Beta (ZC_futures)": -0.08506025908271095,
+      "Beta (ZC_futures) p-value": 0.23125731983202844,
+      "VIF (HE_futures)": 1.01076,
+      "VIF (ZC_futures)": 1.01076,
+      "VIF (const)": 1.218538
+    },
     signalData : [{
       iso_timestamp: "2024-01-22T02:00:00.000Z",
       time: 1705888800, 
@@ -822,33 +871,13 @@ export const mockProcessedBacktest =   {
         }
       ]
     }],
-    static_stats : [{
-      annual_standard_deviation: null,
-      avg_loss_percent: -1,
-      avg_trade_profit: -36223.7704,
-      avg_win_percent: 0,
-      ending_equity: 91966.57,
-      max_drawdown: -0.1216,
-      net_profit: -36223.7704,
-      num_lossing_trades: 1,
-      num_winning_trades: 0,
-      percent_profitable: 0,
-      profit_and_loss: 0,
-      profit_factor: 0,
-      sortino_ratio: 0,
-      total_fees: 1.4404,
-      total_return: -0.0803,
-      total_trades: 1
-    }],
-    timeseriesData: [
+    dailyTimeseriesData: [
       {
         timestamp: 1705885200,
         equity_value: 100050.79,
         period_return: 0,
         cumulative_return: 0,
         percent_drawdown: 0,
-        daily_strategy_return: 0,
-        daily_benchmark_return: 0
       },
       {
         timestamp: 1705888800,
@@ -856,8 +885,6 @@ export const mockProcessedBacktest =   {
         period_return: -1.66,
         cumulative_return: -1.66,
         percent_drawdown: 0,
-        daily_strategy_return: -1.6602999999999999,
-        daily_benchmark_return: 0.2921
       },
       {
         timestamp: 1705892400,
@@ -865,9 +892,38 @@ export const mockProcessedBacktest =   {
         period_return: -2.41,
         cumulative_return: -4.03,
         percent_drawdown: 0,
-        daily_strategy_return: -2.4069,
-        daily_benchmark_return: 0.0812
       }
+    ],
+    periodTimeseriesData: [
+      {
+        timestamp: 1705885200,
+        equity_value: 100050.79,
+        period_return: 0,
+        cumulative_return: 0,
+        percent_drawdown: 0,
+      },
+      {
+        timestamp: 1705888800,
+        equity_value: 98389.68,
+        period_return: -1.66,
+        cumulative_return: -1.66,
+        percent_drawdown: 0,
+      },
+      {
+        timestamp: 1705892400,
+        equity_value: 96021.49,
+        period_return: -2.41,
+        cumulative_return: -4.03,
+        percent_drawdown: 0,
+      }
+    ],
+    regressionTimeseriesData: [
+        {timestamp: 1706850000, daily_benchmark_return: 0},
+        {timestamp: 1707109200, daily_benchmark_return: 0.24},
+        {timestamp: 1707195600, daily_benchmark_return: 0.63},
+        {timestamp: 1707282000, daily_benchmark_return: 0.5599999999999999},
+        {timestamp: 1707368400, daily_benchmark_return: 1.52},
+        {timestamp: 1707454800, daily_benchmark_return: 0.52}
     ],
     tradeData : [
       {
